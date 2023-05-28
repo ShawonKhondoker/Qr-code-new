@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>শাওন খন্দকার</title>
+    <style>
+  body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: black;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  animation-name: fadeInOut;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  color: #ff0000;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+.animated-button:before {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  height: 0%;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: height 0.3s, opacity 0.3s;
+}
+
+.animated-button {
+  display: flex;
+  justify-items: center;
+  padding: 12px 15px ;
+  margin-bottom: 30px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+ 
+  background-color: #337ab7;
+  color: #fff;
+  border-radius: 4px;
+  width: 200px;
+  height: 55px;
+  transition: background-color 0.3s ease;
+  box-shadow: 5px 8px 5px 5px rgba(0, 0, 0, 0.2);
+  
+}
+
+.animated-button:hover:before {
+  height: 100%;
+  opacity: 1;
+}
+img{
+  width: 210px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 10px 8px 0px 5px rgba(0, 0, 0, 0.2);
+  
+}
+
+#textInput {
+    display: flex;
+  justify-content: center;
+  animation-name: slideIn;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    
+  }
+}
+.write {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 10px 8px 10px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  background: rgba;
+}
+
+@keyframes qrCodeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#qrCodeImage {
+  animation: qrCodeAnimation 5s infinite;
+  border: 2px solid #000;
+  box-shadow: 13px 15px 10px 5px rgba(0, 0, 0, 0.3);
+  margin-top: 40px;
+  
+}
+.pik{
+  display: flex;
+justify-content: center;
+}
+
+    </style>
+    <script>
+        function generateQRCode() {
+            var text = document.getElementById("textInput").value;
+            var qrCode = "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(text);
+            document.getElementById("qrCodeImage").src = qrCode;
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>শাওন খন্দকার</h1>
+    
+<div class="pik">    <label class="write" for="textInput">লিখুন:</label>
+    <input  type="text" id="textInput">
+   
+    </div>
+    <div class="pik">    <button class="animated-button" onclick="generateQRCode()">কিউআর কোড তৈরি করুন</button>
+    </div>
+    
+   <div class="pik">    <img id="qrCodeImage" src="InShot_20230528_015212846.jpg" alt="QR Code">
+   </div>
+
+</body>
+</html>
